@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LimbRise — Rise From Anything.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ===== LimbRise Brand Identity Guide 2026 ===== */
+    --coral:#FF7F4D;        /* Coral Sunrise — energy, warmth, RISE/HUMAN */
+    --teal:#4DC8C0;         /* Rise Teal — innovation, trust, BUILD/KNOW */
+    --white:#FFFFFF;
+    --peach:#FFF0E8;        /* Soft Peach */
+    --mist:#E8F8F7;         /* Teal Mist */
+    --charcoal:#2C2C2C;     /* body copy — never pure black */
+    --rising-gradient: linear-gradient(135deg, #FF7F4D 0%, #4DC8C0 100%);
+    --line: rgba(44,44,44,0.10);
+    --max: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--white);color:var(--charcoal);
+    font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:800;margin:0;letter-spacing:-0.01em;}
+  p{line-height:1.65;margin:0;}
+
+  .t-hero{font-size:clamp(40px,5.6vw,64px);font-weight:800;line-height:1.05;}
+  .t-sub{font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(22px,3vw,34px);}
+  .t-quote{font-family:'Montserrat',sans-serif;font-style:italic;font-weight:700;font-size:clamp(22px,3vw,34px);line-height:1.3;}
+  .t-stat{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(40px,6vw,68px);line-height:1;}
+  .text-coral{color:var(--coral);}
+  .text-teal{color:var(--teal);}
+
+  .gradient-bar{height:3px;width:64px;background:var(--rising-gradient);border-radius:4px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;
+    font-weight:700;font-size:14px;padding:15px 26px;border-radius:30px;
+    transition:all .2s ease;white-space:nowrap;
+  }
+  .btn-solid{background:var(--coral);color:var(--white);}
+  .btn-solid:hover{background:#ff6a2e;}
+  .btn-outline{border:2px solid var(--charcoal);color:var(--charcoal);}
+  .btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+  .btn-arrow{transition:transform .2s ease;}
+  .btn:hover .btn-arrow{transform:translate(3px,-3px);}
+
+  .icon{width:34px;height:34px;}
+  .icon path,.icon line,.icon circle,.icon polyline,.icon rect{
+    fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav{max-width:var(--max);margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .logo-mark{display:flex;align-items:center;gap:10px;}
+  .logo-mark img{height:40px;width:40px;}
+  .logo-mark span{font-family:'Montserrat',sans-serif;font-weight:800;font-size:19px;}
+  .logo-mark span.l1{color:var(--coral);}
+  .logo-mark span.l2{color:var(--teal);}
+  .nav-links{display:flex;gap:34px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px;}
+  .nav-links a{color:var(--charcoal);opacity:.75;}
+  .nav-links a:hover{opacity:1;color:var(--coral);}
+  @media (max-width:880px){.nav-links{display:none;}}
+
+  .pillar-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;
+    font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:7px 14px;border-radius:30px;margin-bottom:22px;
+  }
+  .pillar-rise{background:var(--peach);color:var(--coral);}
+  .pillar-build{background:var(--mist);color:var(--teal);}
+  .pillar-human{background:var(--white);color:var(--coral);border:1.5px solid var(--peach);}
+  .pillar-know{background:var(--mist);color:var(--teal);}
+
+  .hero{background:var(--peach);padding:90px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center;}
+  .hero h1{margin:8px 0 22px;color:var(--charcoal);}
+  .hero p.lead{font-size:18px;max-width:460px;margin-bottom:30px;color:var(--charcoal);opacity:.85;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+  .hero-visual svg{width:100%;max-width:380px;}
+
+  .stat-strip{background:var(--white);border-top:1px solid var(--line);padding:30px 0;}
+  .stat-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .stat-item{text-align:center;}
+  .stat-item .t-stat{font-size:30px;}
+  .stat-item .stat-cap{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--charcoal);opacity:.65;margin-top:6px;}
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .stat-strip .wrap{grid-template-columns:repeat(2,1fr);gap:28px;}
+  }
+
+  section{padding:96px 0;}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 56px;}
+  .section-head h2{margin-top:14px;}
+
+  .why{background:var(--white);}
+  .why-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .quote-card{background:var(--peach);border-radius:20px;padding:40px;}
+  .quote-card cite{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-style:normal;font-weight:600;font-size:13px;color:var(--charcoal);opacity:.7;margin-top:18px;}
+  @media (max-width:880px){.why-grid{grid-template-columns:1fr;gap:32px;}}
+
+  .build{background:var(--mist);}
+  .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .product-card{background:var(--white);border-radius:20px;padding:40px;display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(44,44,44,0.04);}
+  .product-card .icon{margin-bottom:20px;}
+  .product-card h3{font-size:26px;margin-bottom:12px;}
+  .product-card p.desc{color:var(--charcoal);opacity:.8;margin-bottom:24px;flex-grow:1;}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
+  .pill{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;padding:6px 12px;border-radius:30px;}
+  .pill.coral{background:var(--peach);color:var(--coral);}
+  .pill.teal{background:var(--mist);color:var(--teal);}
+  @media (max-width:880px){.products-grid{grid-template-columns:1fr;}}
+
+  .know{background:var(--white);}
+  .loop-diagram{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+  .loop-node{flex:1;min-width:170px;background:var(--mist);border-radius:18px;padding:26px 22px;text-align:center;}
+  .loop-node h4{font-size:17px;margin:10px 0 6px;}
+  .loop-node p{font-size:13.5px;opacity:.75;}
+  .loop-node .n-eyebrow{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);}
+  .loop-arrow{color:var(--coral);font-size:20px;}
+  @media (max-width:780px){.loop-arrow{display:none;}}
+
+  .human{background:var(--peach);}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .team-card{background:var(--white);border-radius:20px;padding:30px;}
+  .avatar{
+    width:54px;height:54px;border-radius:50%;background:var(--rising-gradient);
+    display:flex;align-items:center;justify-content:center;color:var(--white);
+    font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;margin-bottom:16px;
+  }
+  .team-card h4{font-size:16px;margin-bottom:2px;}
+  .team-role{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--coral);margin-bottom:12px;}
+  .team-card p{font-size:13.5px;opacity:.8;}
+  @media (max-width:880px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.team-grid{grid-template-columns:1fr;}}
+
+  .advisors{margin-top:36px;background:var(--white);border-radius:18px;padding:28px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .advisor .name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;}
+  .advisor .role{font-size:12.5px;opacity:.65;margin-top:3px;}
+
+  .ground{background:var(--rising-gradient);color:var(--white);}
+  .ground .section-head h2{color:var(--white);}
+  .ground .pillar-eyebrow{background:rgba(255,255,255,0.18);color:var(--white);}
+  .ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .ask-card{background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.35);border-radius:20px;padding:36px;backdrop-filter:blur(4px);}
+  .ask-card .t-stat{color:var(--white);}
+  .ask-sub{font-size:13px;opacity:.85;margin-top:4px;}
+  .use-of-funds{list-style:none;margin:26px 0 0;padding:0;}
+  .use-of-funds li{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid rgba(255,255,255,0.25);font-size:14px;}
+  .use-of-funds li:first-child{border-top:none;}
+  .use-of-funds .tag{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;opacity:.85;}
+  .ground p.lead{opacity:.92;margin-bottom:26px;font-size:16px;}
+  .btn-white{background:var(--white);color:var(--coral);}
+  .btn-white:hover{background:var(--charcoal);color:var(--white);}
+  .btn-outline-white{border:2px solid rgba(255,255,255,0.7);color:var(--white);}
+  .btn-outline-white:hover{border-color:var(--white);background:rgba(255,255,255,0.12);}
+  @media (max-width:880px){.ask-grid{grid-template-columns:1fr;}}
+
+  footer{background:var(--charcoal);color:var(--white);padding:70px 0 32px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 0.7fr 0.7fr 0.9fr;gap:36px;margin-bottom:56px;}
+  .footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .footer-logo img{height:36px;width:36px;}
+  .footer-logo span{font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:var(--white);}
+  footer p{color:rgba(255,255,255,0.55);max-width:380px;}
+  .fcol h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+  .fcol a{display:block;font-size:14px;color:rgba(255,255,255,0.82);margin-bottom:10px;}
+  .fcol a:hover{color:var(--coral);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.14);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,0.45);}
+  .status-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;display:inline-block;margin-right:6px;}
+  @media (max-width:880px){.footer-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo-mark">
+      <img src="limbrise-logo.png" alt="LimbRise logo">
+      <span><span class="l1">Limb</span><span class="l2">Rise</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#story">Our Story</a>
+      <a href="#team">Team</a>
+      <a href="#investors">Investors</a>
+    </div>
+    <a class="btn btn-solid" href="#investors">Request Deck <span class="btn-arrow">↗</span></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pillar-eyebrow pillar-rise">💪 Rise — Medtech · Mobility Recovery</span>
+        <h1 class="t-hero">Rise from <span class="text-coral">anything.</span></h1>
+        <p class="lead">LimbRise builds the hardware and intelligence that move people through rehabilitation — instead of around it. A hands-free mobility brace and an AI recovery coach, working as one system.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="#product">See RevoStep <span class="btn-arrow">↗</span></a>
+          <a class="btn btn-outline" href="#investors">Investor Overview</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30,260 Q90,260 110,200 Q130,140 175,185 Q205,215 195,260" stroke="#FF7F4D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M195,260 Q230,200 280,175 Q320,155 310,115 Q300,80 340,70" stroke="#4DC8C0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="340" cy="70" r="7" fill="#FF7F4D"/>
+          <path d="M60,40 Q90,10 120,40 Q150,10 180,40" stroke="#FF7F4D" stroke-width="2" fill="none" stroke-linecap="round" opacity=".45"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="stat-strip">
+    <div class="wrap">
+      <div class="stat-item"><div class="t-stat text-coral">2026</div><div class="stat-cap">National Champions — beat Waterloo's top teams</div></div>
+      <div class="stat-item"><div class="t-stat text-teal">2</div><div class="stat-cap">Products in active development</div></div>
+      <div class="stat-item"><div class="t-stat text-coral">2</div><div class="stat-cap">Clinical advisors on the founding board</div></div>
+      <div class="stat-item"><div class="t-stat text-teal">$550K</div><div class="stat-cap">Seed round opening Q3 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="story">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pillar-eyebrow pillar-human">🧡 Human</span>
+      <h2 class="t-sub">Two torn knees, one shared frustration.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="quote-card">
+        <p class="t-quote text-coral">"Recovery shouldn't cost you your independence."</p>
+        <cite>— Richard Hetherington, Co-Founder &amp; CEO, LimbRise</cite>
+      </div>
+      <div>
+        <p>LimbRise started as a 4th-year Sustainable Design Engineering project at UPEI, after Richard tore his knee and Noor tore his meniscus within the same stretch of university. Both lived through the same slow, disconnected road back to feeling normal — crutches that fight your gait, and rehab plans with no feedback loop in between appointments.</p>
+        <p style="margin-top:16px;">That shared experience became the company's thesis: recovery isn't one device or one app. It's a system — a brace that supports natural movement, and software that turns that movement into guidance. We're building both, together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build" id="product">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pillar-eyebrow pillar-build">🔬 Build — Products &amp; Services</span>
+      <h2 class="t-sub">One hardware system. One intelligence layer.</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <svg class="icon" viewBox="0 0 34 34"><path d="M6,28 L6,18 Q6,10 17,10 Q28,10 28,18 L28,28" stroke="#FF7F4D"/><line x1="6" y1="28" x2="6" y2="32" stroke="#FF7F4D"/><line x1="28" y1="28" x2="28" y2="32" stroke="#FF7F4D"/><circle cx="17" cy="6" r="3" stroke="#FF7F4D"/></svg>
+        <h3>RevoStep</h3>
+        <p class="desc">A next-generation hands-free mobility brace for knee injuries. RevoStep distributes load directly into the muscle, rather than the arms, helping users stay active through recovery, reduce atrophy, and move with a natural gait while healing.</p>
+        <div class="pill-row">
+          <span class="pill coral">Hands-free</span>
+          <span class="pill coral">Load-distributing</span>
+          <span class="pill coral">Patent-pending</span>
+        </div>
+        <a class="btn btn-outline" href="#">Explore RevoStep <span class="btn-arrow">↗</span></a>
+      </div>
+      <div class="product-card">
+        <svg class="icon" viewBox="0 0 34 34"><rect x="5" y="4" width="24" height="26" rx="4" stroke="#4DC8C0"/><line x1="11" y1="11" x2="23" y2="11" stroke="#4DC8C0"/><line x1="11" y1="17" x2="20" y2="17" stroke="#4DC8C0"/><path d="M11,23 L15,23 L17,20 L20,26 L23,23" stroke="#4DC8C0"/></svg>
+        <h3>Reebound</h3>
+        <p class="desc">A personalized AI recovery coach. Reebound guides patients between clinical visits with smart workout tracking and progress insight, giving care teams visibility they don't currently have outside the clinic.</p>
+        <div class="pill-row">
+          <span class="pill teal">AI-guided</span>
+          <span class="pill teal">Progress tracking</span>
+          <span class="pill teal">Care-team visibility</span>
+        </div>
+        <a class="btn btn-outline" href="#">Explore Reebound <span class="btn-arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="know">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pillar-eyebrow pillar-know">🧠 Know — The Ecosystem</span>
+      <h2 class="t-sub">Movement data in. Clearer recovery out.</h2>
+    </div>
+    <p style="text-align:center;max-width:560px;margin:-30px auto 40px;opacity:.75;">RevoStep and Reebound aren't sold separately — they're a loop. The brace captures real movement; the app turns it into guidance; the patient and care team both see the same picture of progress.</p>
+    <div class="loop-diagram">
+      <div class="loop-node"><div class="n-eyebrow">01 — Capture</div><h4>RevoStep</h4><p>Senses gait &amp; load in real time</p></div>
+      <div class="loop-arrow">↗</div>
+      <div class="loop-node"><div class="n-eyebrow">02 — Interpret</div><h4>Reebound AI</h4><p>Turns movement into insight</p></div>
+      <div class="loop-arrow">↗</div>
+      <div class="loop-node"><div class="n-eyebrow">03 — Guide</div><h4>Patient + Clinician</h4><p>Shared view of recovery progress</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="human" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pillar-eyebrow pillar-human">🧡 Human — Meet the Team</span>
+      <h2 class="t-sub">Engineers and operators, not just founders.</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="avatar">R</div><h4>Richard Hetherington</h4><div class="team-role">Co-Founder &amp; CEO</div><p>UPEI Sustainable Design Engineering. Leads vision, fundraising, and the company's clinical-first standard.</p></div>
+      <div class="team-card"><div class="avatar">N</div><h4>Noor Mazhar</h4><div class="team-role">Co-Founder &amp; CTO</div><p>Leads the intelligence layer behind RevoStep and Reebound — sensing, data, and product architecture.</p></div>
+      <div class="team-card"><div class="avatar">D</div><h4>Diya Bubna</h4><div class="team-role">Head of Business Operations</div><p>Runs the operating cadence — finance, partnerships, and investor readiness.</p></div>
+      <div class="team-card"><div class="avatar">Z</div><h4>Zhyryn</h4><div class="team-role">Head of Brand &amp; Marketing</div><p>Builds the public face of LimbRise and the Reebound community.</p></div>
+      <div class="team-card"><div class="avatar">B</div><h4>Brianna Lawton</h4><div class="team-role">Lead Product Engineer</div><p>Mechanical design and structural validation on RevoStep's brace system.</p></div>
+      <div class="team-card"><div class="avatar">E</div><h4>Elijah Dodd</h4><div class="team-role">Lead Product Engineer</div><p>Owns prototyping, materials, and design-for-manufacture on RevoStep.</p></div>
+    </div>
+    <div class="advisors">
+      <div class="advisor"><div class="name">Dr. Chris McGibbon</div><div class="role">Clinical Advisory Board</div></div>
+      <div class="advisor"><div class="name">Dr. Chris Cowper-Smith</div><div class="role">Clinical Advisory Board</div></div>
+      <div class="advisor"><div class="name">UPEI</div><div class="role">Originating institution — Sustainable Design Engineering</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ground" id="investors">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pillar-eyebrow">🌱 Ground — For Investors</span>
+      <h2 class="t-sub">Raising a $550K seed, opening Q3 2026.</h2>
+    </div>
+    <div class="ask-grid">
+      <div class="ask-card">
+        <div class="t-stat">$550K</div>
+        <div class="ask-sub">Seed round — target close Q3 2026</div>
+        <ul class="use-of-funds">
+          <li><span>Product development &amp; clinical validation</span><span class="tag">RevoStep</span></li>
+          <li><span>Go-to-market &amp; pilot partnerships</span><span class="tag">Reebound</span></li>
+          <li><span>Core team expansion</span><span class="tag">Team</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="lead">We're sharing our full deck — traction, clinical roadmap, and financial model — directly with investors. If mobility recovery is on your thesis, we'd like five minutes of your time.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn-white" href="mailto:invest@limbrise.com">Request the Deck <span class="btn-arrow">↗</span></a>
+          <a class="btn btn-outline-white" href="#">Book Intro Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="limbrise-logo.png" alt="LimbRise logo">
+          <span>LimbRise</span>
+        </div>
+        <p>Whether you're an investor, a clinical partner, or just following along — we'd love to hear from you.</p>
+      </div>
+      <div class="fcol"><h5>Product</h5><a href="#">RevoStep</a><a href="#">Reebound</a></div>
+      <div class="fcol"><h5>Company</h5><a href="#story">Our Story</a><a href="#team">Team</a><a href="#investors">Investors</a></div>
+      <div class="fcol"><h5>Connect</h5><a href="mailto:hello@limbrise.com">hello@limbrise.com</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 LimbRise Inc. All rights reserved.</div>
+      <div><span class="status-dot"></span>All Systems Operational</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
